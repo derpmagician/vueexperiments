@@ -1,11 +1,6 @@
 <script setup>
-import { ref } from 'vue';
-
-const exampleImg = "https://images.unsplash.com/photo-1600331947525-65394059bdb1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
-let topVal = ref(61);
-let rightVal = ref(44);
-let bottomVal = ref(20);
-let leftVal  = ref(35);
+import ObjView from '../components/ObjView.vue'
+import ImageComparison from '../components/ImageComparison.vue';
 
 </script>
 
@@ -13,106 +8,15 @@ let leftVal  = ref(35);
 
 <!-- <div class="hstack gap-3"> -->
 <div class="container d-flex align-items-center justify-content-center fw-bold">
-  <div class="row gap-3 ">
-    <div class="d-flex-row align-items-center col-lg-4">
-      <p class="text-center">Original Image</p>
-      <img class="img-0 mx-auto d-flex align-items-center " :src="exampleImg" alt="Reduced Size of the full image">
-    </div>
-    <div class="item col  d-flex-row">
-      <p  class="text-center bg-white py-1 rounded"><code>object-view-box: inset({{topVal}}% {{rightVal}}% {{bottomVal}}% {{leftVal}}%)</code></p>
-      <img :style="{
-        'object-view-box': `inset(${topVal}% ${rightVal}% ${bottomVal}% ${leftVal}%)`
-      }" class="img-1 mx-auto d-flex align-items-center" :src="exampleImg" alt="">
-    </div>
-    <div class="col flex-fill"
-      :class="isDark ? 'btn-outline-primary  bd-secondary ' : 'bg-secondary text-white'">
-      <div class="row mt-4">
-        <div class="col">
-          <Label for="topVal" class="py-2">
-            <span class="">topVal</span>
-          </Label>
-        </div>
-        <div class="col">
-          <input class="py-2" type="range" min="-100" max="100"
-            id="topVal" v-model="topVal"
-          />
-        </div>
-        <div class="col">
-          {{ topVal }}
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <Label for="rightVal" class="py-2">
-            <span class="">rightVal</span>
-          </Label>
-        </div>
-        <div class="col">
-          <input class="py-2" type="range" min="-100" max="100"
-            id="rightVal" v-model="rightVal"
-          />
-        </div>
-        <div class="col">
-          {{ rightVal }}
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <Label for="bottomVal" class="py-2">
-            <span class="">bottomVal</span>
-          </Label>
-        </div>
-        <div class="col">
-          <input class="py-2" type="range" min="-100" max="100"
-            id="bottomVal" v-model="bottomVal"
-          />
-        </div>
-        <div class="col">
-          {{ bottomVal }}
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <Label for="leftVal" class="py-2">
-            <span class="">leftVal</span>
-          </Label>
-        </div>
-        <div class="col">
-          <input class="py-2" type="range" min="-100" max="100"
-            id="leftVal" v-model="leftVal"
-          />
-        </div>
-        <div class="col">
-          {{ leftVal }}
-        </div>
-      </div>
-    </div>
-
-  </div>
+  <ObjView class="mb-3" />
+</div>
+<div class="container d-flex flex-column align-items-center justify-content-center fw-bold">
+  <ImageComparison />
 </div>
 
 </template>
 
 <style >
 
-img {
-  object-fit: cover;
-}
-
-.img-0 {
-  width: 250px;
-  /* aspect-ratio: 3 / 2; */
-}
-
-.img-1 {
-  width: 120px;
-  aspect-ratio: 2 / 3;
-}
-
-
-.item code {
-  font-size: 14px;
-  /* color: rgb(35, 14, 129); */
-}
 
 </style>

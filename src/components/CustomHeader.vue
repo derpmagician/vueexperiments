@@ -1,8 +1,5 @@
 <script setup>
 const props = defineProps({
-  // toggleDark: {
-  //   type: Function,
-  // },
   isDark: {
     type: Boolean,
   },
@@ -21,12 +18,10 @@ defineEmits(['toggleDark'])
         <router-link to="/cssexperiment" class="btn col me-2"
           :class="isDark ? 'btn-outline-primary bd-dark' : 'btn-primary'">Css Experiment
         </router-link>
-        <label for="light">Cambiar luz</label>
-        <input id="light" type="checkbox" class="me-2" :checked="isDark"
+        <label for="lightChck">Cambiar luz</label>
+        <input id="lightChck" type="checkbox" name="ligh_check" class="me-2" :checked="isDark"
           @change="$emit('toggleDark')" />
-
-
-        <!-- <button class="btn btn-primary me-2" @click="$emit('toggleDark(), isDark')">Cambiar tema</button> {{ isDark }} -->
+        
       </div>
     </nav>
 
