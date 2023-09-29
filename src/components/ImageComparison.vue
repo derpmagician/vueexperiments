@@ -27,18 +27,7 @@ const sliderValue = ref(50);
   </div>
 </template>
 
-<style>
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-html,body{
-  display: grid;
-  height: 100%;
-  place-items: center;
-  background: #efefef;
-}
+<style scope>
 .wrapper{
   position: relative;
   height: 500px;
@@ -58,7 +47,6 @@ html,body{
   width: 100%;
   background: url("https://images.unsplash.com/photo-1695418625020-d48ccb5dc1bd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80") no-repeat;
   /* background: url("images/car.jpg") no-repeat; */
-  /* https://i.imgur.com/4GEjFUP.png */
 }
 .wrapper .images .img-2{
   position: absolute;
