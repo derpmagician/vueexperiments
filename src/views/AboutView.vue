@@ -16,16 +16,7 @@ const router = useRouter();
 const databaseStore = useDatabaseStore();
 const url = ref('');
 const { isValidUrl } = useIsValidUrl(url);
-// const { triggerToast } = useTriggerToast();
 
-
-// const triggerToast = () => {
-//   toast('No es un enlace valido', {
-//     type: 'error',
-//     position: 'top-right',
-//     autoClose: 1000,
-//   });
-// };
 
 onMounted(() => {
   databaseStore.$reset();
