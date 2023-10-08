@@ -1,7 +1,40 @@
+// router/index.js
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import CssExperimentView from '../views/CssExperimentView.vue'
+import { useUserStore } from '@/stores/user'
 
+const requireAuth = async (to, from, next) => {
+  const userStore = useUserStore();
+  userStore.loading = true;
+  const user = await userStore.currentUser();
+  if (user) {
+      next();
+  } else {
+      next("/login");
+  }
+  userStore.loading = false;
+};
+
+const requireNoAuth = async (to, from, next) => {
+  const userStore = useUserStore();
+  userStore.loading = true;
+  const user = await userStore.currentUser();
+  if (user) {
+      next("/about");
+  } else {
+      next();
+  }
+  userStore.loading = false;
+};
+
+// const requireAuth = async (to, from, next) => {
+//   const userStore = useUserStore();
+//   // const user = await userStore.currentUser();
+//   if (userStore.userData) {
+//     next();
+//   } else {
+//     next("/login");
+//   }
+// };
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -10,7 +43,20 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      // component: Home,
+      component: () => import('../views/Home.vue'),
+      // beforeEnter: requireAuth,
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('../views/Login.vue'),
+      beforeEnter: requireNoAuth,
+    },{
+      path: '/register',
+      name: 'register',
+      component: () => import('../views/Register.vue'),
+      beforeEnter: requireNoAuth,
     },
     {
       path: '/about',
@@ -21,9 +67,17 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue')
     },
     {
+      path: '/editlink/:id',
+      name: 'editlink',
+      component: () => import('../views/EditLink.vue'),
+      beforeEnter: requireAuth,
+    },    
+    {
       path: '/cssexperiment',
       name: 'cssexperiment',
-      component: () => import('../views/CssExperimentView.vue')
+      component: () => import('../views/CssExperimentView.vue'),
+      beforeEnter: requireAuth,
+
     }
   ]
 })

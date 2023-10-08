@@ -1,12 +1,17 @@
 <script setup>
 import { ref, computed } from 'vue';
+import { useUserStore } from '@/stores/user';
 import ChecksList from './ChecksList.vue';
+
+const userStore = useUserStore();
 
 const checkedNames = ref([])
 const checkOptions= [
   "Option1", "Option2", "Option3", "Option4"
 ]
 const num = ref(1);
+
+
 defineProps({
   // msg: {
   //   type: String,
@@ -46,7 +51,12 @@ const classcomputed = computed(() => (index) => {
   </section>
   <hr>
   <section :class="classOdd" >
-    qwqwqw
+    {{userStore.userData}}
+    <!-- {{userStore.uper}} -->
+    <!-- <button
+      @click="userStore.registerUser('Ignacio')">
+      Acceder
+    </button> -->
   </section>
 
 </div>
