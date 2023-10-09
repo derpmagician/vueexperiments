@@ -1,1 +1,0 @@
-import{o as r,c as s}from"./index-bb1b3d36.js";const a=(e,t)=>{const o=e.__vccOpts||e;for(const[c,n]of t)o[c]=n;return o},_={};function f(e,t){return r(),s("div",null," Estas en Home ")}const m=a(_,[["render",f]]);export{m as default};
